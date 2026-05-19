@@ -46,7 +46,7 @@ Extract ALL colors — convert Pantone, CMYK, RGB to HEX. Return only the JSON o
     });
 
     const data = await response.json();
-    if (data.error) return res.status(500).json({ error: data.error.message });
+    if (data.error) return res.status(500).json({ error: data.error.message, full: data.error });
 
     const text = data.content.filter(b => b.type === 'text').map(b => b.text).join('');
     const clean = text.replace(/```json\s*/gi, '').replace(/```\s*/gi, '').trim();
